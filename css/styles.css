@@ -1,9 +1,25 @@
+/*TAG SELECTORS*/
+
+
 body {
-  background-color: #ffeed0;
+  background-color: #0c3c78;
 }
 
 h1 {
-  color: #f79f24;
+  color: #f30a49;
+}
+
+h3{
+  color: #f30a49
+}
+
+p{
+  color: #04879c;
+}
+
+li{
+  color: #04879c;
+
 }
 
 hr {
@@ -15,6 +31,15 @@ hr {
   width: 5%;
 }
 
-img {
-  height: 100px;
+/*CLASS SELECTORS*/
+/* you can use classes in many attiribute in page*/
+.picture{
+  height: 200px;
 }
+
+.circular{
+border-radius: 100%;
+}
+
+/*ID SELECTORS*/
+/* you can use ids just in one attiribute*/
