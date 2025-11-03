@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  resume-web:
+    image: alikaan-resume:latest
+    container_name: resume-website
+    restart: unless-stopped
+    networks:
+      - resume-network
+
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - certs:/etc/nginx/certs:ro
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+    networks:
+      - resume-network
+    restart: unless-stopped
+
+  letsencrypt:
+    image: nginxproxy/acme-companion
+    container_name: letsencrypt
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - certs:/etc/nginx/certs
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - acme:/etc/acme.sh
+    environment:
+      - DEFAULT_EMAIL=turkmenalikaan@gmail.com
+    depends_on:
+      - nginx-proxy
+    networks:
+      - resume-network
+    restart: unless-stopped
+
+networks:
+  resume-network:
+    driver: bridge
+
+volumes:
+  certs:
+  vhost:
+  html:
+  acme:
