@@ -4,6 +4,10 @@ services:
   resume-web:
     image: alikaan-resume:latest
     container_name: resume-website
+    environment:
+      - VIRTUAL_HOST=alikaanturkmen.com
+      - LETSENCRYPT_HOST=alikaanturkmen.com
+      - LETSENCRYPT_EMAIL=turkmenalikaan@gmail.com
     restart: unless-stopped
     networks:
       - resume-network

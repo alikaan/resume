@@ -11,10 +11,10 @@ echo -e "${YELLOW}Building Docker image...${NC}"
 ./build.sh
 
 echo -e "${YELLOW}Stopping containers...${NC}"
-docker-compose -f docker-compose.prod.yml down
+docker compose -f docker-compose.prod.yml down
 
 echo -e "${YELLOW}Starting containers...${NC}"
-docker-compose -f docker-compose.prod.yml up -d
+docker compose -f docker-compose.prod.yml up -d
 
 echo -e "${GREEN}✓ Deployment completed!${NC}"
 echo -e "${YELLOW}SSL certificate will be generated automatically${NC}"
