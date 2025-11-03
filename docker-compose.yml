@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  resume-web:
+    image: alikaan-resume:latest
+    container_name: resume-website
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    networks:
+      - resume-network
+
+networks:
+  resume-network:
+    driver: bridge
