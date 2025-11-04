@@ -15,8 +15,6 @@ fi
 echo -e "${YELLOW}Pulling latest code...${NC}"
 git pull origin master
 
-exit 0 
-
 echo -e "${YELLOW}Building Docker image...${NC}"
 ./build.sh
 
